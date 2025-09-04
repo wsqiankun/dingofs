@@ -112,6 +112,11 @@ DEFINE_int64(client_vfs_warmup_trigger_restart_interval_secs, 1800,
 DEFINE_validator(client_vfs_warmup_trigger_restart_interval_secs, &PassInt64);
 // end warmp params
 
+// memory monitor
+DEFINE_int32(client_memory_stats_interval_secs, 30,
+             "the interval seconds to collect jemalloc stats");
+// end memory monitor
+
 // ## vfs meta
 DEFINE_uint32(client_vfs_read_dir_batch_size, 1024, "read dir batch size.");
 DEFINE_uint32(client_vfs_rpc_timeout_ms, 60000, "rpc timeout ms");

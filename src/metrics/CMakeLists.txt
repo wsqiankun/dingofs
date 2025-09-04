@@ -16,6 +16,7 @@ file(GLOB DINGOFS_METRICS_LIB_SRCS
     "blockaccess/*.cpp"
     "client/*.cpp"
     "client/vfs_legacy/*.cpp"
+    "client/memory/*.cpp"
     "metaserver/*.cpp"
 )
 

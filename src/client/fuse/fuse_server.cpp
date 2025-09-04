@@ -21,6 +21,7 @@
 #include <sys/socket.h>
 
 #include <chrono>
+#include <memory>
 
 #include "absl/cleanup/cleanup.h"
 #include "client/fuse/fuse_common.h"
@@ -59,6 +60,9 @@ int FuseServer::Init(int argc, char* argv[], struct MountOption* mount_option) {
 
   AllocateFuseInitBuf();
 
+  memory_monitor_ = std::make_unique<metrics::MemoryMonitor>();
+  memory_monitor_->Init();
+
   if (ParseCmdLine() == 1) return 1;
   if (OptParse() == 1) return 1;
 
@@ -68,6 +72,7 @@ int FuseServer::Init(int argc, char* argv[], struct MountOption* mount_option) {
 FuseServer::~FuseServer() {
   unlink(fd_comm_file_.c_str());
 
+  memory_monitor_->Stop();
   FreeFuseInitBuf();
   free(opts_.mountpoint);
   FreeParsedArgv(parsed_argv_, argc_);

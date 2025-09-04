@@ -78,6 +78,9 @@ DECLARE_bool(client_vfs_intime_warmup_enable);
 DECLARE_int64(client_vfs_warmup_mtime_restart_interval_secs);
 DECLARE_int64(client_vfs_warmup_trigger_restart_interval_secs);
 
+// memory monitor
+DECLARE_int32(client_memory_stats_interval_secs);
+
 // vfs meta
 DECLARE_uint32(client_vfs_read_dir_batch_size);
 DECLARE_uint32(client_vfs_rpc_timeout_ms);

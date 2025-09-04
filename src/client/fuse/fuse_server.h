@@ -19,9 +19,11 @@
 
 #include <bvar/bvar.h>
 
+#include <memory>
 #include <string>
 
 #include "client/fuse/fuse_common.h"
+#include "metrics/client/memory/memory_monitor.h"
 #include "utils/concurrent/concurrent.h"
 
 namespace dingofs {
@@ -97,6 +99,7 @@ class FuseServer {
 
   // manager metrics
   bvar::Status<std::string> fd_comm_metrics_;
+  std::unique_ptr<metrics::MemoryMonitor> memory_monitor_;
 };
 
 }  // namespace fuse
